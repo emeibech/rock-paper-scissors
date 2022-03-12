@@ -1,11 +1,38 @@
 // greet player & show score history
+let scoreHistory = 'No score history yet.'
+let playOrReset;
+for (playOrReset = 'reset'; playOrReset === 'reset';) {
+let greeting = `Greetings, player. Here is the Score History: ${scoreHistory}`;
+alert(greeting);
+
 // ask player if they want to play or reset score history
-// {if type 'reset', reset history
-// if they type 'play', start the game
-// else show error and ask again}
+playOrReset = prompt('Type "play" to start a new game or "reset" to reset score history.', '');
+
+// {if player types 'reset', reset score history
+    if (playOrReset === 'reset') {
+     scoreHistory = 'History has been reset.';
+     alert('Score History has been reset');
+    }
+    // if player types 'play', start the game
+    else if (playOrReset === 'play') {
+     gameStart();
+    }
+    // else show error and ask again}
+    else {
+        alert('error');
+        playOrReset = 'reset';
+    }
+
+}
 
 // start the game | best of 5 | round 1 of 5
-// prompt for player name and put in a variable
+function gameStart () {
+    alert('Best of 5');
+    alert('Round 1 of 5');
+    // prompt for player name and put in a variable
+    let playerName = prompt('What is your Name?', '');
+}
+
 // get input from player (rock, paper, scissor)
 // {if input is neither (rock, paper, scissor) show error and ask for input again
 // else put input in a variable}
