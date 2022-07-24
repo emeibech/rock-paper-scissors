@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <script defer src="script.jss"></script>
+    
 
     <div class="title-bar">
         <p>Rock Paper Scissors</p>
+        <p class="sub">First to Five Wins</p>
     </div>
     
     <div class="score-bar">
@@ -20,21 +21,179 @@
     </div>
 
     <div class="selection">
-        <img src="./img/player-rock.png" alt="Rock" width="144" height="108">
-        <img src="./img/player-paper.png" alt="Paper" width="144" height="108"> 
-        <img src="./img/player-scissors.png" alt="Scissors" width="144" height="108"> 
+        <button><img class="rock" src="./img/player-rock.png" alt="Rock" width="144px" height="108px"></button>
+        <button><img class="paper" src="./img/player-paper.png" alt="Paper" width="144px" height="108px"> </button>
+        <button><img class="scissors" src="./img/player-scissors.png" alt="Scissors" width="144px" height="108px"> </button>
     </div>
 
     <div class="picks">
         <div class="player-pick">
-
+            
         </div>
         <div class="computer-pick">
 
         </div>
     </div>
     <div class="footer">
-        <p>Copyright 2022| <a href="https://github.com/emeibech">github.com/emeibech</a></p>
+        <p>Copyright 2022 | <a href="https://github.com/emeibech">emeibech</a></p>
     </div>
+    <script>
+        function showCompImage () {
+        if (computerPick === 'rock') {
+            compRock.setAttribute('src', './img/comp-rock.png');
+            compRock.setAttribute('height', '325px');
+            compRock.setAttribute('width', '433px');
+            compSide.appendChild(compRock);
+        }
+        else if (computerPick === 'paper') {
+            compPaper.setAttribute('src', './img/comp-paper.png');
+            compPaper.setAttribute('height', '325px');
+            compPaper.setAttribute('width', '433px');
+            compSide.appendChild(compPaper);
+        }
+        else if (computerPick === 'scissors') {
+            compScissors.setAttribute('src', './img/comp-scissors.png');
+            compScissors.setAttribute('height', '325px');
+            compScissors.setAttribute('width', '433px');
+            compSide.appendChild(compScissors);
+        }};
+
+        //generate computer pick
+        let computerPick = Math.floor(Math.random() * 3);
+        
+        switch (computerPick) {
+        case 0:
+            computerPick = 'rock';
+            break;
+        case 1:
+            computerPick = 'paper';
+            break;
+        case 2:
+            computerPick = 'scissors';
+            break;
+        }
+        
+//display image on hover
+  const rockPick = document.querySelector('.selection .rock');
+  const paperPick = document.querySelector('.selection .paper');
+  const scissorsPick = document.querySelector('.selection .scissors');
+  const showImage = document.querySelector('.player-pick');
+  const rockImage = document.createElement('img');
+  const paperImage = document.createElement('img');
+  const scissorsImage = document.createElement('img');
+  
+  function displayImageRock() {
+  rockImage.setAttribute('src', './img/player-rock.png');
+  rockImage.setAttribute('height', '325px')
+  rockImage.setAttribute('width', '433px')
+  };
+  
+  function removeImageRock() {
+  rockImage.setAttribute('src', '');
+  rockImage.setAttribute('height', '');
+  rockImage.setAttribute('width', '');
+  };
+  
+  function displayImagePaper() {
+  paperImage.setAttribute('src', './img/player-paper.png');
+  paperImage.setAttribute('height', '325px')
+  paperImage.setAttribute('width', '433px')
+  };
+  
+  function removeImagePaper() {
+  paperImage.setAttribute('src', '');
+  paperImage.setAttribute('height', '');
+  paperImage.setAttribute('width', '');
+  };
+  
+  function displayImageScissors() {
+  scissorsImage.setAttribute('src', './img/player-scissors.png');
+  scissorsImage.setAttribute('height', '325px')
+  scissorsImage.setAttribute('width', '433px')
+  };
+  
+  function removeImageScissors() {
+  scissorsImage.setAttribute('src', '');
+  scissorsImage.setAttribute('height', '');
+  scissorsImage.setAttribute('width', '');
+  };
+  
+  rockPick.addEventListener('click', displayImageRock);
+  showImage.appendChild(rockImage);
+  paperPick.addEventListener('click', displayImagePaper);
+  showImage.appendChild(paperImage);
+  scissorsPick.addEventListener('click', displayImageScissors);
+  showImage.appendChild(scissorsImage);
+
+        //display appropriate image for computer pick
+        const compSide = document.querySelector('.computer-pick');
+        const compRock = document.createElement('img');
+        const compPaper = document.createElement('img');
+        const compScissors = document.createElement('img');
+        const computerTurn = document.querySelectorAll('.selection');
+        for (let i = 0; i < computerTurn.length; i++) {
+            computerTurn[i].addEventListener('click', showCompImage);
+        }
+
+        //determine which button is clicked
+        let playerPick;
+        for (pick of Array.from(computerTurn)) {
+            addEventListener('click', function (event) {
+            playerPick = event.target.className;
+        });
+        }
+
+        // determine the winner for this round
+        let computerScore = 0;
+        let playerScore = 0;
+
+        for (pick of Array.from(computerTurn)) {
+            addEventListener('click', playRound);
+        }
+
+        function playRound() {
+            if (playerPick === 'rock') {
+        switch (computerPick) {
+        case 'rock':
+            break;
+        case 'paper':
+            computerScore += 1;
+            break;
+        case 'scissors':
+            playerScore += 1;
+            break;
+    }
+}
+
+        else if (playerPick === 'paper') {
+        switch (computerPick) {
+        case 'rock':
+            playerScore += 1;
+            break;
+        case 'paper':
+            break;
+        case 'scissors':
+            computerScore += 1;
+            break;
+    }
+}
+
+        else if (playerPick === 'scissors') {
+        switch (computerPick) {
+        case 'rock':
+            computerScore += 1;
+            break;
+        case 'paper':
+            playerScore += 1;
+            break;
+        case 'scissors':
+            break;
+    }
+}
+}
+
+        
+
+    </script>
 </body>
 </html>

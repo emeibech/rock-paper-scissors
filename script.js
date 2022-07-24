@@ -2,6 +2,70 @@
 function random(min, max) {
     return min + Math.random() * (max - min);
   }
+  
+//display image on hover
+  const rockPick = document.querySelector('.selection .rock');
+  const paperPick = document.querySelector('.selection .paper');
+  const scissorsPick = document.querySelector('.selection .scissors');
+  const showImage = document.querySelector('.player-pick');
+  const rockImage = document.createElement('img');
+  const paperImage = document.createElement('img');
+  const scissorsImage = document.createElement('img');
+  
+  function displayImageRock() {
+  rockImage.setAttribute('src', './img/player-rock.png');
+  rockImage.setAttribute('height', '325px')
+  rockImage.setAttribute('width', '433px')
+  };
+  
+  function removeImageRock() {
+  rockImage.setAttribute('src', '');
+  rockImage.setAttribute('height', '');
+  rockImage.setAttribute('width', '');
+  };
+  
+  function displayImagePaper() {
+  paperImage.setAttribute('src', './img/player-paper.png');
+  paperImage.setAttribute('height', '325px')
+  paperImage.setAttribute('width', '433px')
+  };
+  
+  function removeImagePaper() {
+  paperImage.setAttribute('src', '');
+  paperImage.setAttribute('height', '');
+  paperImage.setAttribute('width', '');
+  };
+  
+  function displayImageScissors() {
+  scissorsImage.setAttribute('src', './img/player-scissors.png');
+  scissorsImage.setAttribute('height', '325px')
+  scissorsImage.setAttribute('width', '433px')
+  };
+  
+  function removeImageScissors() {
+  scissorsImage.setAttribute('src', '');
+  scissorsImage.setAttribute('height', '');
+  scissorsImage.setAttribute('width', '');
+  };
+  
+  rockPick.addEventListener('mouseover', displayImageRock);
+  rockPick.addEventListener('mouseout', removeImageRock);
+  showImage.appendChild(rockImage);
+  paperPick.addEventListener('mouseover', displayImagePaper);
+  paperPick.addEventListener('mouseout', removeImagePaper);
+  showImage.appendChild(paperImage);
+  scissorsPick.addEventListener('mouseover', displayImageScissors);
+  scissorsPick.addEventListener('mouseout', removeImageScissors);
+  showImage.appendChild(scissorsImage);
+
+//call random function for computer-pick
+const computerTurn = document.querySelectorAll('.selection > button');
+computerTurn.addEventListener('click', );
+
+//create new function to randomize computer pick
+let computerPick = random(0,2);
+console.log(computerPick);
+
 
 // greet player & show score history
 let scoreHistory = 'No score history yet.'
@@ -169,3 +233,4 @@ else if (computerWins === 3) {
 
 scoreHistory = `${playerName}: ${playerScore} | Computer: ${computerScore}`;
 }
+
